@@ -2,6 +2,6 @@
 {
     public abstract class AbstractGeometricEntity
     {
-        public virtual double GetSquareOfFicure() => default; 
+        public abstract double GetSquareOfFigure();
     }
 }

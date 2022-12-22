@@ -1,8 +1,8 @@
-﻿using Microsoft.Win32.SafeHandles;
+﻿using AreaOfGeometicFigures.Domain.Inerfaces;
 
 namespace AreaOfGeometicFigures.Domain.Entities
 {
-    public class Triangle : AbstractGeometricEntity
+    public class Triangle : AbstractGeometricEntity, IGeometricEntity
     {
         private double _sideA { get; init; }
         private double _sideB { get; init; }
@@ -17,7 +17,7 @@ namespace AreaOfGeometicFigures.Domain.Entities
             IsRightTriangle = IsRightTriangleChecker(sideA, sideB, sideC);
         }
 
-        public override double GetSquareOfFicure()
+        public override double GetSquareOfFigure()
         {
             var p = HalfPerimetr();
             return Math.Sqrt((p * (p - _sideA)) * (p * (p - _sideB)) * (p * (p - _sideC)));
@@ -35,5 +35,10 @@ namespace AreaOfGeometicFigures.Domain.Entities
             => sideA * sideA + sideB * sideB == sideC * sideC
                 || sideC * sideC + sideB * sideB == sideA * sideA
                 || sideA * sideA + sideC * sideC == sideB * sideB;
+
+        public double GetSquare()
+        {
+            throw new NotImplementedException();
+        }
     }           
 }
