@@ -17,7 +17,7 @@ namespace AreaOfGeometricFigures.Tests
             var actual = circle.GetSquareOfFigure();
 
             //Assert
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -28,22 +28,39 @@ namespace AreaOfGeometricFigures.Tests
             var expected = 10.8253;
             //Act
 
-            var triangleSquare = Math.Round( triangle.GetSquareOfFigure(), 4);
+            var triangleSquare = Math.Round(triangle.GetSquareOfFigure(), 4);
 
             //Assert
             Assert.IsFalse(triangle.IsRightTriangle);
-            Assert.AreEqual(expected,triangleSquare);
+            Assert.AreEqual(expected, triangleSquare);
         }
 
         [Test]
         public void CreateTriangleWithData_CreateRectangularTriangle_3_4_5_ReturnTriangeSquare()
         {
-            //Arrenge
+            //Arrange
             var rectangularTriangle = new Triangle(3, 4, 5);
             //Act
             var isRectangularTriangle = rectangularTriangle.IsRightTriangle;
             //Assert
             Assert.IsTrue(isRectangularTriangle);
+        }
+
+        [Test]
+        public void CreateEquilateralTriangleWithData_Data_5_ReturnSquareAndPerimetr()
+        {
+            //Arrange
+            var equilateralTriangle = new EquilateralTriangle();
+            var expectedPerimetr = 7.5;
+            var expectedSquare = 10.8253;
+
+            //Act
+            var actualPerimetr = equilateralTriangle.CalculatePerimeter(5);
+            var actualSquare = Math.Round(equilateralTriangle.CalculateSquare(5), 4);
+            //Assert
+            Assert.AreEqual(expectedPerimetr,actualPerimetr);
+            Assert.AreEqual(expectedSquare, actualSquare);
+
         }
     }
 }
