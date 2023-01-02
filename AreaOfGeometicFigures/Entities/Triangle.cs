@@ -20,7 +20,7 @@ namespace AreaOfGeometicFigures.Domain.Entities
         public override double GetSquareOfFigure()
         {
             var p = HalfPerimetr();
-            return Math.Sqrt((p * (p - _sideA)) * (p * (p - _sideB)) * (p * (p - _sideC)));
+            return Math.Sqrt(p * (p - _sideA) * (p - _sideB) * (p - _sideC));
         }
 
         private double HalfPerimetr()
