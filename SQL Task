@@ -1,0 +1,53 @@
+MS SQL под рукой не оказалось, сделано на SQLite. Создавал все в DBeaver.
+
+
+CREATE  TABLE Products
+(ProductId INTEGER PRIMARY KEY,
+Name TEXT,
+Country TEXT,
+Comment TEXT);
+
+INSERT INTO Products(ProductId, Name, Country, Comment) VALUES (6, 'Сырок','Россия','Мишка')
+(1,'Колбаса', 'Россия', 'Нет'),
+(2,'Хлеб', 'Россия', 'Бородинский'),
+(3,'Сыр', 'Россия', 'Пошехонский'),
+(4,'Молоко', 'Россия', 'Крымское'),
+(5, 'Сметана','Россия','Крымский молочник')
+
+
+CREATE TABLE Categories
+(CategoryId INTEGER PRIMARY KEY,
+Title TEXT,
+Comments TEXT);
+
+INSERT INTO Categories(CategoryId, Title, Comments) VALUES
+(1,'Мясные изделия', 'Нет'),
+(2,'Хлебобулочные изделия', 'Бородинский'),
+(3,'Молочные продукты', 'Пошехонский')
+
+CREATE TABLE ProductsCategories
+(ProductIds INTEGER,
+CategoryIds INTEGER)
+INSERT INTO ProductsCategories(ProductIds, CategoryIds) VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,3),
+(5,3)
+
+
+
+SELECT Name, Title FROM Products
+LEFT JOIN ProductsCategories ON ProductsCategories.ProductIds = Products.ProductId
+LEFT JOIN Categories ON ProductsCategories.CategoryIds = Categories.CategoryId 
+ORDER BY Products.Name;
+
+
+ВЫВОД ЗАПРОСА
+Колбаса	Мясные изделия
+Молоко	Молочные продукты
+Сметана	Молочные продукты
+Сыр	Молочные продукты
+Сырок	
+Хлеб	Хлебобулочные изделия
+
